@@ -1,1 +1,4 @@
-from .validators import url_validator
+from .validators import (
+    URLValidator,
+    url_validator,
+)
