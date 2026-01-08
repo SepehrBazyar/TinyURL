@@ -2,8 +2,8 @@ import logging
 
 import psycopg2
 
-from .base import BaseManager
-from ..exceptions import (
+from managers.base import BaseManager
+from exceptions import (
     DuplicateDataError,
     NotExistError,
 )

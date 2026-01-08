@@ -1,17 +1,17 @@
 import random
 import string
 
-from ..exceptions import (
+from exceptions import (
     DuplicateDataError,
     ShortCodeLeak,
     URLError,
 )
-from ..managers import (
+from managers import (
     BaseManager,
     db_manager,
     memory_manager,
 )
-from ..utils import (
+from utils import (
     URLValidator,
     url_validator,
 )
@@ -43,7 +43,7 @@ class URLShortener:
         else:
             raise ShortCodeLeak("End of Data")
 
-        return "http://127.0.0.1:8000/" + short_code
+        return short_code
 
     def get_original(self, short_code: str) -> str:
         return self.manager.read(short_code)
