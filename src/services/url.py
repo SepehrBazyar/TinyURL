@@ -8,6 +8,7 @@ from ..exceptions import (
 )
 from ..managers import (
     BaseManager,
+    db_manager,
     memory_manager,
 )
 from ..utils import (
@@ -53,7 +54,7 @@ class URLShortener:
 
 
 url_shortener_service = URLShortener(
-    manager=memory_manager,
+    manager=db_manager,  # memory_manager
     validator=url_validator,
     short_length=4,
 )
