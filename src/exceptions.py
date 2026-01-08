@@ -1,0 +1,2 @@
+class URLError(Exception):
+    pass
