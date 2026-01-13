@@ -48,7 +48,8 @@ class URLShortener:
     def get_original(self, short_code: str) -> str:
         return self.manager.read(short_code)
 
-    def _generate_short_code(self, short_length: int) -> str:
+    @staticmethod
+    def _generate_short_code(short_length: int) -> str:
         base = string.ascii_letters + string.digits
         return "".join(random.choices(base, k=short_length))
 
