@@ -1,7 +1,7 @@
 import logging
 
-from managers.base import BaseManager
-from exceptions import (
+from .base import BaseManager
+from ..exceptions import (
     DuplicateDataError,
     NotExistError,
 )
@@ -31,6 +31,9 @@ class MemoryManager(BaseManager):
             raise NotExistError("No Value") from e
 
         return result
+
+    def __len__(self):
+        return len(self.__storage)
 
 
 memory_manager = MemoryManager()

@@ -1,3 +1,6 @@
-from managers.base import BaseManager
-from managers.memory import memory_manager
-from managers.database import db_manager
+from .base import BaseManager
+from .memory import (
+    MemoryManager,
+    memory_manager,
+)
+from .database import db_manager
