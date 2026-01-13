@@ -1,0 +1,16 @@
+<!doctype html>
+
+<title>URL Shortener</title>
+
+<form method="post">
+  <input type="url" name="url" placeholder="Enter URL" required>
+  <input type="submit" value="Shorten">
+</form>
+
+{% if short_url %}
+    <p>Shortened URL: <a href="/{{ short_url }}">{{ request.host_url }}{{ short_url }}</a></p>
+{% endif %}
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}

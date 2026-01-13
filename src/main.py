@@ -3,7 +3,6 @@ from flask import (
     redirect,
     request,
     render_template,
-    render_template_string,
 )
 
 from exceptions import (
@@ -13,22 +12,7 @@ from exceptions import (
 )
 from services import url_shortener_service
 
-app = Flask(__name__)
-
-HTML_FORM = """
-<!doctype html>
-<title>URL Shortener</title>
-<form method="post">
-  <input type="url" name="url" placeholder="Enter URL" required>
-  <input type="submit" value="Shorten">
-</form>
-{% if short_url %}
-<p>Shortened URL: <a href="/{{ short_url }}">{{ request.host_url }}{{ short_url }}</a></p>
-{% endif %}
-{% if error %}
-<p style="color:red;">{{ error }}</p>
-{% endif %}
-"""
+app = Flask(__name__, template_folder="../templates")
 
 
 @app.route("/<short_code>/")
@@ -58,8 +42,8 @@ def home():
         except ShortCodeLeak as e:
             error = "DOWN SERVICE"
 
-    return render_template_string(
-        HTML_FORM,
+    return render_template(
+        "index.html",
         request=request,
         short_url=short_url,
         error=error,
